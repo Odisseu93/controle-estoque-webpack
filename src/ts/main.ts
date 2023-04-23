@@ -7,7 +7,7 @@ const item = {
 }
 
 
-async function createItem(item) {
+async function createItem(item: any) {
   try {
     const response = await fetch(baseURL + "cadastroProdutos", {
       method: "POST",
@@ -40,7 +40,7 @@ async function request() {
 
 request().then(function(response) {
   console.log(response)
-    response.forEach(produto => {
+    response.forEach((produto: any) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>${produto.id}</td>
@@ -52,7 +52,7 @@ request().then(function(response) {
             <button>remover</button>
           </td>
         `;
-        conteudo_tabela.appendChild(tr);
+        conteudo_tabela!.appendChild(tr);
       });
 });
 
