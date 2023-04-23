@@ -27,9 +27,14 @@
 - [ ] Implementar validações de schema com o [zod]('https://www.npmjs.com/package/zod#introduction')
 - [ ] Criar componentes para a composição da aplicação(semelhante a aplicações react)
 - [ ] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
+    - [ ] Cria método get para listagem geral de produtos
+    - [ ] Cria método get por ID
+    - [ ] Cria método post
+    - [ ] Cria método update
 
 ### Comandos
 - Para compilar o código em typescript para javascript execute: `yarn tsc --watch` ***Atenção! todo o seu código em typescript precisa estar na pasta [`./src/ts`](./src/ts)**
+- Para executar JSON Server localmente: `yarn api` **Porta 3333**
 ### Avançado
 - Poder adicionar um limite mínimo e máximo para cada item da lista de produtos
 - Rotina para verificar se alguma quantidade de itens está abaixo do limite mínimo
