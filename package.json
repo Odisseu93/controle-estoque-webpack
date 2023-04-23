@@ -2,7 +2,8 @@
   "name": "controle-estoque",
   "packageManager": "yarn@3.5.0",
   "scripts": {
-    "ts": "tsc --watch"
+    "ts": "tsc --watch",
+    "api": "json-server --watch produtos.json --port 3333"
   },
   "devDependencies": {
     "typescript": "^5.0.4"
