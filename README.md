@@ -1,8 +1,8 @@
 # Controle de estoque de uma loja de periféricos de TI 
 
 ## Dependências
-
-Para o front-end deste projeto rodar ele precisa de uma API de dados de produtos. Para gerar uma API local experimental use o projeto que está no repositório https://github.com/FaSn0w/controle-estoque-api criado por @FaSn0w.
+- [yarn](https://yarnpkg.com/)
+- Para o front-end deste projeto rodar ele precisa de uma API de dados de produtos. Para gerar uma API local experimental use o projeto que está no repositório https://github.com/FaSn0w/controle-estoque-api criado por @FaSn0w.
 
 ## Lista de funcionalidades
 
@@ -27,6 +27,9 @@ Para o front-end deste projeto rodar ele precisa de uma API de dados de produtos
 - [ ] Implementar validações de schema com o [zod]('https://www.npmjs.com/package/zod#introduction')
 - [ ] Criar componentes para a composição da aplicação(semelhante a aplicações react)
 - [ ] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
+
+### Comandos
+- Para compilar o código em typescript para javascript execute: `yarn tsc --watch` ***Atenção! todo o seu código em typescript precisa estar na pasta [`./src/ts`](./src/ts)**
 ### Avançado
 - Poder adicionar um limite mínimo e máximo para cada item da lista de produtos
 - Rotina para verificar se alguma quantidade de itens está abaixo do limite mínimo
