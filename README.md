@@ -22,6 +22,11 @@ Para o front-end deste projeto rodar ele precisa de uma API de dados de produtos
 - [ ] Consultar um item na lista de produtos para saber a quantidade disponível
 - [ ] Criar interface para consultar um item na lista de produtos para saber a quantidade disponível
 
+### Adicionais
+- [ ] Implementar o Typescript no projeto.
+- [ ] Implementar validações de schema com o [zod]('https://www.npmjs.com/package/zod#introduction')
+- [ ] Criar componentes para a composição da aplicação(semelhante a aplicações react)
+- [ ] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
 ### Avançado
 - Poder adicionar um limite mínimo e máximo para cada item da lista de produtos
 - Rotina para verificar se alguma quantidade de itens está abaixo do limite mínimo
