@@ -27,10 +27,10 @@
 - [ ] Implementar validações de schema com o [zod]('https://www.npmjs.com/package/zod#introduction')
 - [ ] Criar componentes para a composição da aplicação(semelhante a aplicações react)
 - [ ] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
-    - [ ] Cria método get para listagem geral de produtos
-    - [ ] Cria método get por ID
-    - [ ] Cria método post
-    - [ ] Cria método update
+    - [x] Criar método get para listagem geral de produtos
+    - [ ] Criar método get por ID
+    - [ ] Criar método post
+    - [ ] Criar método update
 
 ### Comandos
 - Para executar o _build_ : `yarn build` 
