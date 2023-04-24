@@ -33,7 +33,7 @@
     - [ ] Cria método update
 
 ### Comandos
-- Para compilar o código em typescript para javascript execute: `yarn tsc --watch` ***Atenção! todo o seu código em typescript precisa estar na pasta [`./src/ts`](./src/ts)**
+- Para executar o _build_ : `yarn build` 
 - Para executar JSON Server localmente: `yarn api` **Porta 3333**
 ### Avançado
 - Poder adicionar um limite mínimo e máximo para cada item da lista de produtos
