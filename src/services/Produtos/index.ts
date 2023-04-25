@@ -1,7 +1,5 @@
 import api from "../axios-config";
 
-
-
 const getAll = async () => {
     try {
         const { data } = await api.get('');

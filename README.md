@@ -25,8 +25,8 @@
 ### Adicionais
 - [X] Implementar o Typescript no projeto.
 - [ ] Implementar validações de schema com o [zod]('https://www.npmjs.com/package/zod#introduction')
-- [ ] Criar componentes para a composição da aplicação(semelhante a aplicações react)
-- [ ] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
+- [x] Criar componentes para a composição da aplicação(semelhante a aplicações react)
+- [x] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
     - [x] Criar método get para listagem geral de produtos
     - [ ] Criar método get por ID
     - [ ] Criar método post
