@@ -30,6 +30,7 @@
     - [x] Criar método get para listagem geral de produtos
     - [ ] Criar método get por ID
     - [ ] Criar método post
+    - [x] Criar método delete
     - [ ] Criar método update
 
 ### Comandos

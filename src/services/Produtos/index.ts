@@ -9,6 +9,15 @@ const getAll = async () => {
     }
 };
 
+const remove = async (id: string) => {
+    try {
+        const { data } = await api.delete(`${id}`);
+        return data;
+    } catch (err) {
+        console.log(err)
+    }
+};
 
 
-export const Produtos = { getAll }; 
+
+export const Produtos = { getAll, remove }; 

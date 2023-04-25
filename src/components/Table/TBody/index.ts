@@ -4,15 +4,23 @@ const TBody = () => {
 
     const tbody = document.createElement('tbody');
      
-        Produtos.getAll().then((produto) => {
+    
+    const HandleClickBtnRem = (id: string) => {
+        console.log(id);
+        Produtos.remove(id)
+    };
+    
+    
+    
+    Produtos.getAll().then((produto) => {
             
-            produto.map((item: string) => {
+            produto.map((item: any) => {
                 
                 const tr = document.createElement('tr')
                 tr.className = 'linha-tabela-produto';
             
             
-            console.table(item)
+            // console.table(item)
 
             for (let [chave, valor] of Object.entries(
                 item
@@ -23,15 +31,21 @@ const TBody = () => {
 
                 
                 td.textContent = String(valor);
+                tr.id = chave === 'id' ? chave : '';
                 tr.append(td)
             };
             
             const btnEdt = document.createElement('button');
             btnEdt.textContent = 'Editar';
-
+            
             const btnRm = document.createElement('button');
             btnRm.textContent = 'Remover';
 
+            const {id } = item;
+
+            btnRm.onclick = ()=> HandleClickBtnRem(id);
+            
+          
             tr.append(btnEdt, btnRm);
 
             tbody.append(tr);
