@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.5.0",
   "scripts": {
     "api": "json-server --watch produtos.json --port 3333",
-    "build": "webpack"
+    "build": "webpack --mode=development"
   },
   "devDependencies": {
     "axios": "^1.3.6",
