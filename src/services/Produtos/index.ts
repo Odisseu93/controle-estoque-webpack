@@ -18,6 +18,15 @@ const remove = async (id: string) => {
     }
 };
 
+const create = async (data:any) => {
+    try {
+        api.post('',data);
+    } catch (err) {
+        console.log(err)
+    }
+};
 
 
-export const Produtos = { getAll, remove }; 
+
+
+export const Produtos = { getAll, remove, create }; 

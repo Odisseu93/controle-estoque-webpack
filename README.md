@@ -29,7 +29,7 @@
 - [x] Criar uma mock API com o [json-server]('https://www.npmjs.com/package/json-server')
     - [x] Criar método get para listagem geral de produtos
     - [ ] Criar método get por ID
-    - [ ] Criar método post
+    - [X] Criar método post
     - [x] Criar método delete
     - [ ] Criar método update
 
