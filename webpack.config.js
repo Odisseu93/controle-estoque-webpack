@@ -1,13 +1,18 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.ts',
   devtool: 'inline-source-map',
-  watchOptions: {
-    aggregateTimeout: 200,
-    poll: 1000,
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    open: true,
+    liveReload: true,
+    compress: true,
+    port: 3000,
   },
-  watch: true,
   module: {
     rules: [
       {
