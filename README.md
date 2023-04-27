@@ -31,7 +31,7 @@
     - [ ] Criar método get por ID
     - [X] Criar método post
     - [x] Criar método delete
-    - [ ] Criar método update
+    - [x] Criar método update
 
 ### Comandos
 - Para executar o _build_ : `yarn build` 

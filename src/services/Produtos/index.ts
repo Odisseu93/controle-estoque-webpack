@@ -25,8 +25,17 @@ const create = async (data:any) => {
         console.log(err)
     }
 };
+const update = async (data:any) => {
+    try {
+        const { id } = data;
+
+        api.put(id,data);
+    } catch (err) {
+        console.log(err)
+    }
+};
 
 
 
 
-export const Produtos = { getAll, remove, create }; 
+export const Produtos = { getAll, remove, create, update }; 
