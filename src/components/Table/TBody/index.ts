@@ -50,8 +50,11 @@ const TBody = () => {
             btnRm.onclick = ()=> HandleClickBtnRem(id);
             btnEdt.onclick = ()=> HandleClickBtnEdt(item);
             
+            const td = document.createElement('td');
+            td.className = 'btns'
+            td.append(btnEdt, btnRm);
           
-            tr.append(btnEdt, btnRm);
+            tr.append(td);
 
             tbody.append(tr);
 

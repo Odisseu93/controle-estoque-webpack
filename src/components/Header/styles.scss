@@ -1,0 +1,72 @@
+.controle {
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    top: 0;
+    max-width: 100vw;
+    height: auto;
+    background: #ccc;
+    box-shadow: 1px 3px 5px #333;
+    padding: 1rem;
+
+    & .titulo {
+        height: fit-content;
+        align-self: center;
+        letter-spacing: 0.1rem;
+    }
+
+    & .inputs {
+        height: 100%;
+        margin-left: 1rem;
+        display: grid;
+        gap: 0.5rem;
+        width: fit-content;
+        height: fit-content;
+
+        & .adicionar {
+            width: 4rem;
+            height: 2rem;
+            margin: 0.5rem auto;
+        }
+
+        & .busca {
+            width: 100%;
+            height: 2rem;
+            border: none;
+            font-size: 1.3rem;
+            padding: 0.3rem;
+            box-shadow: -1px 1px 1px #333;
+        }
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .controle {
+
+        & .inputs {
+            height: 100%;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            width: 40%;
+            height: fit-content;
+
+            & .adicionar {}
+
+            & .busca {
+                height: 2rem;
+                border: none;
+                font-size: 1.3rem;
+                padding: 0.3rem;
+                box-shadow: -1px 1px 1px #333;
+            }
+        }
+
+        & .titulo {
+            flex-grow: 0;
+        }
+    }
+
+}

@@ -1,0 +1,152 @@
+
+.conteudo {
+    width: 95vw;
+    margin: 2rem auto;
+    background: #eee;
+    border: none;
+    text-align: center;
+    border-radius: 20rem;
+    border-collapse: collapse;
+}
+
+@media(min-width: 768px) {
+    .conteudo {
+        width: 98vw;
+        background: #eee;
+        margin-top: 5rem;
+        border-collapse: collapse;
+    }
+
+}
+
+.conteudo th,
+.conteudo td {
+    text-align: left;
+    padding: 5px 10px 5px 5px;
+}
+
+.topico {
+    color: #eee;
+}
+
+.topico th {
+    background: #333;
+    border: 2px solid white;
+    text-align: center;
+}
+
+.linha-tabela-produto {
+    & td {
+        text-align: center;
+        border: 2px solid white;
+
+    }
+
+    & td:nth-child(5) {
+        border: none;
+    }
+}
+
+.topico td {
+    background: #333;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.td-id {
+    font-weight: bold;
+}
+
+.conteudo tr:nth-child(odd) {
+    background-color: #eee;
+}
+
+.conteudo tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+.btns {
+    display: grid;
+    gap: 2rem;
+    width: fit-content;
+    margin: 1rem auto;
+    padding: 0.5rem;
+
+    & button {
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.3rem;
+
+
+    }
+
+    & button:nth-child(1) {
+        box-shadow: 1px 1px 5px rgba(4, 36, 89, 0.79);
+
+        &:active {
+            box-shadow: 1px 1px 5px rgba(3, 31, 77, 0.79);
+            background: rgba(4, 36, 89, 0.79);
+            color: white;
+
+        }
+    }
+
+    & button:nth-child(2) {
+        box-shadow: 1px 1px 5px rgba(255, 0, 0, 0.355);
+
+        &:active {
+            box-shadow: 1px 1px 5px rgba(127, 0, 0, 0.355);
+            background: rgba(255, 0, 0, 0.355);
+            color: white;
+
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .btns {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+
+        & button:nth-child(1) {
+            box-shadow: 1px 1px 5px rgba(4, 36, 89, 0.79);
+
+            &:hover {
+                transform: scale(0.95);
+                box-shadow: 1px 1px 5px rgba(3, 31, 77, 0.79);
+                background: rgba(4, 37, 89, 0.56);
+                color: white;
+
+            }
+
+            &:active {
+                box-shadow: 1px 1px 5px rgba(3, 31, 77, 0.79);
+                background: rgba(4, 36, 89, 0.79);
+                color: white;
+
+            }
+        }
+
+        & button:nth-child(2) {
+            box-shadow: 1px 1px 5px rgba(255, 0, 0, 0.355);
+
+            &:hover {
+                transform: scale(0.95);
+                box-shadow: 1px 1px 5px rgba(127, 0, 0, 0.355);
+                background: rgba(155, 0, 0, 0.631);
+                color: white;
+
+            }
+
+            &:active {
+                box-shadow: 1px 1px 5px rgba(127, 0, 0, 0.355);
+                background: rgba(255, 0, 0, 0.741);
+                color: white;
+
+            }
+
+        }
+    }
+
+}

@@ -1,3 +1,4 @@
+import './styles.scss'
 import TBody from "./TBody";
 import THead from "./THead";
 

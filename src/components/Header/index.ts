@@ -1,3 +1,5 @@
+import './styles.scss'
+
 const Header = () => {
 
     const header = document.createElement('header');
@@ -5,8 +7,10 @@ const Header = () => {
 
     header.innerHTML = `
     <h1 class="titulo">Controle de estoque</h1>
-    <button class="adicionar">+</button>
-    <input class="busca" type="search">
+    <div class="inputs">
+        <button class="adicionar">+</button>
+        <input class="busca" type="search">
+    </div>
     `
 
     return header;
