@@ -1,0 +1,51 @@
+.form {
+    display: flex;
+    gap: 1rem;
+    flex-flow: column wrap;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.8rem;
+    margin: auto;
+    border: 1px solid tomato;
+    border-radius: 1rem;
+    
+    & .form-group{
+        padding: 0.2rem;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.3;
+        // border: 1px solid blue;
+        box-sizing: border-box;
+        width: 200px;
+
+        & label {
+            font-weight: bold;
+        }
+        
+        & input {
+            padding: 0.2rem;
+            border-radius: 0.3rem;
+        }
+        
+        & .btns {
+            border: none;
+            padding: 0.5rem;
+            background: #CCC;
+            font-weight: bold;
+            border-radius: 0.3rem;
+        }
+    }
+    
+    & .form-group:nth-child(3){
+        & input {
+            width: 4rem;
+        }   
+    }
+    & .form-group:nth-child(4){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        gap: 0.3rem;
+  
+    }
+}

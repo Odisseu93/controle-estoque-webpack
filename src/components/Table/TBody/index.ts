@@ -1,4 +1,5 @@
 import { Produtos } from "../../../services/Produtos";
+import { setDataLocalStorage } from "../../../utils/localStorage";
 
 const TBody = () => {
 
@@ -6,8 +7,11 @@ const TBody = () => {
      
     
     const HandleClickBtnRem = (id: string) => {
-        console.log(id);
         Produtos.remove(id)
+    };
+
+    const HandleClickBtnEdt = (item: any) => {
+        setDataLocalStorage('temp-produtos',item);
     };
     
     
@@ -44,6 +48,7 @@ const TBody = () => {
             const {id } = item;
 
             btnRm.onclick = ()=> HandleClickBtnRem(id);
+            btnEdt.onclick = ()=> HandleClickBtnEdt(item);
             
           
             tr.append(btnEdt, btnRm);
