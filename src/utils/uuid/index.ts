@@ -1,0 +1,1 @@
+export const uuid = ()=> crypto.randomUUID().slice(0, 4);
