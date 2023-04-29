@@ -1,9 +1,15 @@
 import api from "../axios-config";
+import { produtosValidationSchema } from "./schema";
+import { TProduto } from "./types";
 
 const getAll = async () => {
     try {
         const { data } = await api.get('');
-        return data;
+        const result = produtosValidationSchema.safeParse(data);
+        if (result.success) return data;
+        else {
+          console.error(result.error);
+        }
     } catch (err) {
         console.log(err)
     }
@@ -11,21 +17,21 @@ const getAll = async () => {
 
 const remove = async (id: string) => {
     try {
-        const { data } = await api.delete(`${id}`);
-        return data;
+        const { data }= await api.delete(`${id}`);
+        return data as TProduto;
     } catch (err) {
         console.log(err)
     }
 };
 
-const create = async (data:any) => {
+const create = async (data:TProduto) => {
     try {
         api.post('',data);
     } catch (err) {
         console.log(err)
     }
 };
-const update = async (data:any) => {
+const update = async (data:TProduto) => {
     try {
         const { id } = data;
 
