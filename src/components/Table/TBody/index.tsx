@@ -4,12 +4,14 @@ import useFormData from "../../../context/form/hook";
 import { uuid } from "../../../utils/uuid";
 import { useRender } from "../../../context/render/hook";
 import { TProduto } from "../../../services/Produtos/types";
+import useModal from "../../../context/modal/hook";
 
 
 
 const TBody = () => {
     
     const [produtos, setProdutos] = useState<TProduto[]>();
+    const { setShowModal } = useModal();
     const {setFormData } = useFormData();
     const {render, setRender} = useRender();
     
@@ -32,6 +34,7 @@ const TBody = () => {
             const selectedItem = produtos.find(item => item.id === id);
             selectedItem !== undefined ? setFormData(selectedItem) : null;
         }
+        setShowModal(true);
     };
 
     return (

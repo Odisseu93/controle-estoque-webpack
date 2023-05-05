@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { Produtos } from '../../services/Produtos';
-import { uuid } from '../../utils/uuid';
+import { Produtos } from '../../../services/Produtos';
+import { uuid } from '../../../utils/uuid';
 import './styles.scss';
-import useFormData from '../../context/form/hook';
-import { useRender } from '../../context/render/hook';
+import useFormData from '../../../context/form/hook';
+import { useRender } from '../../../context/render/hook';
+import useModal from '../../../context/modal/hook';
 
 const Form = () => {
+    const { setShowModal } = useModal();
     const { formData, setFormData } = useFormData();
     const { render, setRender } = useRender();
 
@@ -19,6 +21,7 @@ const Form = () => {
                 marca: '',
                 qtd: 0,
             })
+            setShowModal(false);
         } else null;
 
     };
@@ -64,6 +67,7 @@ const Form = () => {
                     setTimeout(() => setRender(render + 1), 500);
                 });
         }
+        setShowModal(false);
     }
 
 

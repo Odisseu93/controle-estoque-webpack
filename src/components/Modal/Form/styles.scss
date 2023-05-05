@@ -5,8 +5,9 @@
     width: fit-content;
     height: fit-content;
     padding: 0.8rem;
+    background: white;
     margin: auto;
-    border: 1px solid tomato;
+    border: 5px solid tomato;
     border-radius: 1rem;
     
     & .form-group{
@@ -24,6 +25,7 @@
         
         & input {
             padding: 0.2rem;
+            margin: 0.5rem;
             border-radius: 0.3rem;
         }
         

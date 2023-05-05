@@ -1,14 +1,18 @@
 import React from 'react';
 import './styles.scss'
+import useModal from '../../context/modal/hook';
 
 const Header = () => {
-    return (<header className='controle'>
-        <h1 className='titulo'>Controle de estoque</h1>
-        <div className="inputs">
-            <button className="adicionar">+</button>
-            <input type="search" className='busca' />
-        </div>
-    </header>
+const { setShowModal } = useModal()
+
+    return (
+        <header className='controle' onClick={()=> setShowModal(true)}>
+            <h1 className='titulo'>Controle de estoque</h1>
+            <div className="inputs">
+                <button className="adicionar">+</button>
+                <input type="search" className='busca' />
+            </div>
+        </header>
 
     );
 
