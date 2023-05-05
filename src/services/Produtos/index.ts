@@ -1,5 +1,5 @@
 import api from "../axios-config";
-import { produtosValidationSchema } from "./schema";
+import { ProdutoObject, produtosValidationSchema } from "./schema";
 import { TProduto } from "./types";
 
 const getAll = async () => {
@@ -24,20 +24,40 @@ const remove = async (id: string) => {
     }
 };
 
-const create = async (data:TProduto) => {
+const create = async (data: TProduto): Promise<TProduto | Error> => {
     try {
-        api.post('',data);
+        const result = ProdutoObject.safeParse(data);
+
+        if (result.success) {
+            const resp = await api.post('', data);
+            return resp.data;
+        }
+        else {
+            console.error(result.error);
+            return result.error;
+        }
     } catch (err) {
         console.log(err)
+        return new Error((err as { message: string }).message);
     }
 };
-const update = async (data:TProduto) => {
+
+const update = async (data: TProduto) => {
     try {
         const { id } = data;
+        const result = ProdutoObject.safeParse(data);
 
-        api.put(id,data);
+        if (result.success) {
+            const resp = await api.put(id, data);;
+            return resp.data;
+        }
+        else {
+            console.error(result.error);
+            return result.error;
+        }
     } catch (err) {
         console.log(err)
+        return new Error((err as { message: string }).message);
     }
 };
 
