@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Produtos } from "../../../services/Produtos";
-import { setDataLocalStorage } from "../../../utils/localStorage";
 import useFormData from "../../../context/form/hook";
 import { uuid } from "../../../utils/uuid";
+import { useRender } from "../../../context/render/hook";
+import { TProduto } from "../../../services/Produtos/types";
+
 
 
 const TBody = () => {
-
-    const [produtos, setProdutos] = useState([]);
-    const [reRender , SetReRender] = useState(0);
-    const { formData, setFormData } = useFormData()
+    
+    const [produtos, setProdutos] = useState<TProduto[]>();
+    const {setFormData } = useFormData();
+    const {render, setRender} = useRender();
+    
+    const fetch = () => {
+       Produtos.getAll().then(data => setProdutos(data));
+    };
 
     useEffect(() => {
-        Produtos.getAll().then(data => setProdutos(data));
-    }, [reRender])
-
-
+        fetch();
+    }, [render])
+    
 
     const HandleClickBtnRem = (id: string) => {
         Produtos.remove(id)
-        SetReRender(reRender + 1);
+        setRender(render + 1);
     };
     
     const HandleClickBtnEdt = (id: string) => {
-        // setDataLocalStorage('temp-produtos', produtos.find((item: any) => item.id = id));
-        const data:any = produtos.filter((item: any) => item.id = id)
-        // setFormData({id: 'sfsdg', marca:'jkhksf', nome: 'asfkalj', qtd: 2 });
-        // setFormData( produtos.filter((item: any) => item.id = id));
-        // console.log(data)
-        console.log(formData)
-        // SetReRender(reRender + 1);
+        if (produtos !== undefined) {
+            const selectedItem = produtos.find(item => item.id === id);
+            selectedItem !== undefined ? setFormData(selectedItem) : null;
+        }
     };
-
 
     return (
         <tbody>
