@@ -1,135 +1,103 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Produtos } from '../../services/Produtos';
-import { debounce } from '../../utils/debouce';
-import { getDataLocalStorage, localStorageClear } from '../../utils/localStorage';
 import { uuid } from '../../utils/uuid';
 import './styles.scss';
-import FormContextProvider from '../../context/form/provider';
 import useFormData from '../../context/form/hook';
+import { useRender } from '../../context/render/hook';
 
 const Form = () => {
-    const {formData, setFormData} = useFormData();
-    const {id, marca, nome, qtd} = formData;
-    // const form = document.createElement('form');
-    // form.className = 'form';
+    const { formData, setFormData } = useFormData();
+    const { render, setRender } = useRender();
 
-    // // limpa o formulário e os dados no localstorade
-    // const clear = () => {
-    //     const formForm = form as HTMLFormElement
-    //     formForm.querySelectorAll('input')?.forEach(inp => inp.value = '');
-    //     localStorageClear();
-    // };
+    const handleCancel = () => {
+        if (document.querySelector('#formPostPut')) {
+            const form = document.querySelector('#formPostPut');
+            form!.querySelectorAll('input')?.forEach(inp => inp.value = '');
+            setFormData({
+                id: '',
+                nome: '',
+                marca: '',
+                qtd: 0,
+            })
+        } else null;
 
-    // // realizar tanto o POST como PUT
-    // const handleSubmit = (e: SubmitEvent,) => {
-    //     const form = e.currentTarget as HTMLFormElement;
+    };
 
-    //     const operations = debounce(() => {
-
-    //         const checkMethod = () => {
-    //             enum method {
-    //                 POST,
-    //                 PUT,
-    //             };
-    //             if (!getDataLocalStorage('temp-produtos')) return method.POST;
-    //             return method.PUT;
-    //         };
-
-    //         if (checkMethod() === 0) {
-
-    //             const inputs = {
-    //                 id: uuid(),
-    //                 nome: form['nome'].value,
-    //                 marca: form['marca'].value,
-    //                 qtd: form['qtd'].value,
-    //             };
-
-    //             Produtos.create(inputs);
-    //             clear();
-    //              } else {
-
-    //             const { id } = getDataLocalStorage('temp-produtos');
-
-    //             const inputs = {
-    //                 id: id,
-    //                 nome: form['nome'].value,
-    //                 marca: form['marca'].value,
-    //                 qtd: form['qtd'].value,
-    //             };
-
-    //             Produtos.update(inputs);
-    //             clear();
-    //         };
-    //     },500);
-
-    //     operations();
-
-    // };
-
-    // // verifica qual operação a ser realizada
-    // form.onsubmit = (e: SubmitEvent) => {
-    //     e.preventDefault();
-    //     console.log();
-    //     if (e.submitter !== null && e.submitter.id == 'btnCancelar') handleCancel()
-    //     else handleSubmit(e);
-    // };
-
-    // const handleCancel = () => {
-    //     clear();
-    // }
-
-    // // resgatando dodos do localstorage e setando valores no form
-    // if (getDataLocalStorage('temp-produtos')) {
-    //     const { id, marca, nome, qtd } = getDataLocalStorage('temp-produtos');
-
-    //     setTimeout(() => {
-
-    //         if ([id, marca, nome, qtd].every(att => att !== undefined)) {
-    //             form['nome'].value = nome;
-    //             form['marca'].value = marca;
-    //             form['qtd'].value = qtd;
-    //         };
-    //     }, 300);
-    // };
-
-    // form.innerHTML = `
-    //     <div class="form-group">
-    //         <label for="nome">Nome:</label>
-    //         <input type="text" id="nome" name="nome" required>
-    //     </div>
-    //     <div class="form-group">
-    //         <label for="marca">Marca:</label>
-    //         <input type="text" id="marca" name="marca" required>
-    //     </div>
-    //     <div class="form-group">
-    //         <label for="qtd">Quantidade:</label>
-    //         <input type="number" id="qtd" name="qtd" required>
-    //     </div>
-    //     <div class="form-group">
-    //         <button id="btnEnviar"  class="btns btn-enviar">Enviar</button>
-    //         <button id="btnCancelar" class="btns btn-cancelar">Cancelar</button>
-    //     </div>
-    // `;
     
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.currentTarget as HTMLFormElement;
+
+        if ([formData.id, formData.nome, formData.qtd].every(attribute => attribute !== '' && attribute !== undefined)) {
+            const inputs = {
+                id: String(formData.id),
+                nome: String(form['nome'].value),
+                marca: String(form['marca'].value),
+                qtd: Number(form['qtd'].value),
+            };
+            Produtos
+                .update(inputs)
+                .then((res) => {
+                    if (res instanceof Error) throw res;
+                    console.log(`%c${JSON.stringify({
+                        message: 'Produto atualizado com sucesso!',
+                        data: res
+                    }, null, 3)}`, 'background:white; color:blue;');
+                    setTimeout(() => setRender(render + 1), 500);
+                });
+
+        } else {
+            const inputs = {
+                id: String(uuid()),
+                nome: String(form['nome'].value),
+                marca: String(form['marca'].value),
+                qtd: Number(form['qtd'].value),
+            };
+            Produtos
+                .create(inputs)
+                .then((res) => {
+                    if (res instanceof Error) throw res;
+                    console.log(`%c${JSON.stringify({
+                        message: 'Produto criado com sucesso!',
+                        data: res
+                    }, null, 3)}`, 'background:white; color:green;');
+                    setTimeout(() => setRender(render + 1), 500);
+                });
+        }
+    }
+
+
+    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const target = e.currentTarget;
+        const name = target.name;
+        const value = target.value;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    }
+
+
     return (
-    <form className='form'>
+        <form className='form' id='formPostPut' onSubmit={(e) => handleSubmit(e)}>
             <div className="form-group">
-                <label htmlFor="nome">Nome:</label>
-                <input type="text" id="nome" name="nome"  value={nome} required />
+                <label htmlFor="nome">Nome</label>
+                <input type="text" id="nome" onChange={(e) => handleChange(e)} name="nome" value={formData.nome} required />
             </div>
             <div className="form-group">
-                <label htmlFor="marca">Marca:</label>
-                <input type="text" id="marca" name="marca" value={marca} required />
+                <label htmlFor="marca">Marca</label>
+                <input type="text" id="marca" onChange={(e) => handleChange(e)} name="marca" value={formData.marca} required />
             </div>
             <div className="form-group">
-                <label htmlFor="qtd">Quantidade:</label>
-                <input type="number" id="qtd" name="qtd" value={qtd} required />
+                <label htmlFor="qtd">Quantidade</label>
+                <input type="number" id="qtd" onChange={(e) => handleChange(e)} name="qtd" value={formData.qtd} required />
             </div>
             <div className="form-group">
-                <button id="btnEnviar"  className="btns btn-enviar">Enviar</button>
-                <button id="btnCancelar" className="btns btn-cancelar">Cancelar</button>
+                <button type="submit" id="btnEnviar" className="btns btn-enviar">Enviar</button>
+                <button type="button" id="btnCancelar" onClick={handleCancel} className="btns btn-cancelar">Cancelar</button>
             </div>
-    </form>
+        </form>
     );
 };
 
