@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.scss'
-import useModal from '../../context/modal/hook';
+import { UseMainContext } from '../../context/MainContext/hooks';
 
 const Header = () => {
-const { setShowModal } = useModal()
+const { setShowModal } = UseMainContext()
 
     return (
         <header className='controle' onClick={()=> setShowModal(true)}>

@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Produtos } from '../../../services/Produtos';
 import { uuid } from '../../../utils/uuid';
 import './styles.scss';
-import useFormData from '../../../context/form/hook';
-import { useRender } from '../../../context/render/hook';
-import useModal from '../../../context/modal/hook';
+import { UseMainContext } from '../../../context/MainContext/hooks';
 
 const Form = () => {
-    const { setShowModal } = useModal();
-    const { formData, setFormData } = useFormData();
-    const { render, setRender } = useRender();
+    const {
+        formData,
+        setFormData,
+        render,
+        setRender,
+        setShowModal } = UseMainContext();
 
     const handleCancel = () => {
         if (document.querySelector('#formPostPut')) {

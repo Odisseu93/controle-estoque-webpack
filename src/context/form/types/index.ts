@@ -1,11 +1,11 @@
-export interface FormData {
+export interface IFormData {
     id: string;
     nome: string;
     marca: string;
     qtd: number
 }
 
-export interface FormContextType {
-    formData: FormData;
-    setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+export interface IFormContext {
+    formData: IFormData;
+    setFormData: React.Dispatch<React.SetStateAction<IFormData>>;
 }

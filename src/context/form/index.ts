@@ -1,8 +1,8 @@
 import * as React from "react";
-import { FormContextType } from "./types";
+import { IFormContext } from "./types";
 
 
-const FormContext = React.createContext<FormContextType>({
+const FormContext = React.createContext<IFormContext>({
     formData: {
         id: '',
         nome: '',

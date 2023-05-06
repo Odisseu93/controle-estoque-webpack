@@ -1,10 +1,10 @@
 import React from 'react';
 import Form from './Form';
 import './styles.scss';
-import useModal from '../../context/modal/hook';
+import { UseMainContext } from '../../context/MainContext/hooks';
 
 const Modal = ()=> {
-    const { showModal } = useModal();
+    const { showModal } = UseMainContext();
 
     return (
         <dialog className='modal' open={showModal} >
