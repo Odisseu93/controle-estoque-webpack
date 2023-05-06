@@ -3,6 +3,7 @@ import { Produtos } from '../../../services/Produtos';
 import { uuid } from '../../../utils/uuid';
 import './styles.scss';
 import { UseMainContext } from '../../../context/MainContext/hooks';
+import { typeEnumAlert } from '../../Alert/types';
 
 const Form = () => {
     const {
@@ -10,7 +11,11 @@ const Form = () => {
         setFormData,
         render,
         setRender,
-        setShowModal } = UseMainContext();
+        setShowModal,
+        setAlertData,
+        alertRender,
+        setAlertRender
+    } = UseMainContext();
 
     const handleCancel = () => {
         if (document.querySelector('#formPostPut')) {
@@ -27,7 +32,7 @@ const Form = () => {
 
     };
 
-    
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget as HTMLFormElement;
@@ -42,12 +47,26 @@ const Form = () => {
             Produtos
                 .update(inputs)
                 .then((res) => {
-                    if (res instanceof Error) throw res;
+                    if (res instanceof Error) {
+                        setAlertRender(alertRender + 1);
+                        setAlertData({
+                            type: typeEnumAlert.ERROR,
+                            title: 'Aconteceu Algum erro!',
+                            wait: 2000
+                        });
+                        throw res
+                    };
                     console.log(`%c${JSON.stringify({
                         message: 'Produto atualizado com sucesso!',
                         data: res
                     }, null, 3)}`, 'background:white; color:blue;');
                     setTimeout(() => setRender(render + 1), 500);
+                    setAlertRender(alertRender + 1);
+                    setAlertData({
+                        type: typeEnumAlert.DEFAULT,
+                        title: 'Produto atualizado com sucesso!',
+                        wait: 2000
+                    });
                 });
 
         } else {
@@ -60,7 +79,21 @@ const Form = () => {
             Produtos
                 .create(inputs)
                 .then((res) => {
-                    if (res instanceof Error) throw res;
+                    if (res instanceof Error) {
+                        setAlertRender(alertRender + 1);
+                        setAlertData({
+                            type: typeEnumAlert.ERROR,
+                            title: 'Aconteceu Algum erro!',
+                            wait: 2000
+                        });
+                        throw res
+                    };
+                    setAlertRender(alertRender + 1);
+                    setAlertData({
+                        type: typeEnumAlert.SUCCESS,
+                        title: 'Produto cadastrado com sucesso!',
+                        wait: 2000
+                    });
                     console.log(`%c${JSON.stringify({
                         message: 'Produto criado com sucesso!',
                         data: res
@@ -68,6 +101,12 @@ const Form = () => {
                     setTimeout(() => setRender(render + 1), 500);
                 });
         }
+        setFormData({
+            id: '',
+            nome: '',
+            marca: '',
+            qtd: 0,
+        })
         setShowModal(false);
     }
 

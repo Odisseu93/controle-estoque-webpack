@@ -1,0 +1,37 @@
+.alert {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    background: beige;
+    width: fit-content;
+    max-width: 350px;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    
+    &__title {
+          white-space: nowrap;
+             overflow: hidden;
+            text-overflow: ellipsis "...";
+        
+        &--default {
+            font-size: 1.2rem;
+            color: darkblue;
+        }
+
+        &--error {
+            font-size: 1.2rem;
+            color: tomato;
+        }
+
+        &--success {
+            font-size: 1.2rem;
+            color: darkgreen;
+        }
+    }
+
+
+}

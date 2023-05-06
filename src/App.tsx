@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from './components/Table';
 import Modal from './components/Modal';
+import { Alert } from './components/Alert';
 
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
         <>
             <Table />
             <Modal />
+            <Alert />
         </>
     )
 };
