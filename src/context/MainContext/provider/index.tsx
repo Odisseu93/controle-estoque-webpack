@@ -9,6 +9,7 @@ const MainContextProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [render, setRender] = useState(0);
     const [alertData, setAlertData] = useState<IAlert>({} as IAlert);
     const [alertRender, setAlertRender] = useState(0)
+    const [filter, setFilter] = useState('');
 
     return (
         <MainContext.Provider value={{
@@ -21,7 +22,9 @@ const MainContextProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             alertData,
             setAlertData,
             alertRender,
-            setAlertRender
+            setAlertRender,
+            filter,
+            setFilter,
         }}>
             {children}
         </MainContext.Provider>

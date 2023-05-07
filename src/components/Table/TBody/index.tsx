@@ -13,7 +13,9 @@ const TBody = () => {
         setFormData,
         setShowModal,
         render,
-        setRender } = UseMainContext();
+        setRender,
+        filter, 
+        setFilter } = UseMainContext();
 
     const fetch = () => {
        Produtos.getAll().then(data => setProdutos(data));
@@ -21,6 +23,7 @@ const TBody = () => {
 
     useEffect(() => {
         fetch();
+
     }, [render])
     
 
@@ -39,7 +42,7 @@ const TBody = () => {
 
     return (
         <tbody>
-            {produtos ? produtos.map(({ id, nome, marca, qtd }: any) => {
+            {produtos ? produtos.filter(({ id, nome })=> id === filter || nome.match(new RegExp(filter , 'i')) ).map(({ id, nome, marca, qtd }: TProduto) => {
                 return <tr key={uuid()} className='linha-tabela-produto'>
                     <td className="td-id">{id}</td>
                     <td className="td-nome">{nome}</td>
