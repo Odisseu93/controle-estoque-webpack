@@ -127,15 +127,15 @@ const Form = () => {
         <form className='form' id='formPostPut' onSubmit={(e) => handleSubmit(e)}>
             <div className="form-group">
                 <label htmlFor="nome">Nome</label>
-                <input type="text" id="nome" onChange={(e) => handleChange(e)} name="nome" value={formData.nome} required />
+                <input type="text" id="nome" maxLength={30} onChange={(e) => handleChange(e)} name="nome" value={formData.nome} required />
             </div>
             <div className="form-group">
                 <label htmlFor="marca">Marca</label>
-                <input type="text" id="marca" onChange={(e) => handleChange(e)} name="marca" value={formData.marca} required />
+                <input type="text" id="marca" maxLength={15} onChange={(e) => handleChange(e)} name="marca" value={formData.marca} required />
             </div>
             <div className="form-group">
                 <label htmlFor="qtd">Quantidade</label>
-                <input type="number" id="qtd" onChange={(e) => handleChange(e)} name="qtd" value={formData.qtd} required />
+                <input type="number" min={0} id="qtd" onChange={(e) => handleChange(e)} name="qtd" value={formData.qtd} required />
             </div>
             <div className="form-group">
                 <button type="submit" id="btnEnviar" className="btns btn-enviar">Enviar</button>
