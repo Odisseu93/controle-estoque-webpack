@@ -6,10 +6,10 @@ const Header = () => {
 const { setShowModal } = UseMainContext()
 
     return (
-        <header className='controle' onClick={()=> setShowModal(true)}>
+        <header className='controle'>
             <h1 className='titulo'>Controle de estoque</h1>
             <div className="inputs">
-                <button className="adicionar">+</button>
+                <button className="adicionar" onClick={()=> setShowModal(true)}>+</button>
                 <input type="search" className='busca' />
             </div>
         </header>
