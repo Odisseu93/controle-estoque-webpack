@@ -2,25 +2,25 @@
   "products": [
     {
       "id": "0004",
-      "nome": "m,ndsfgsdfs",
+      "nome": "Monitor",
       "marca": "Samsung",
-      "qtd": 1565
+      "qtd": 50
     },
     {
       "id": "0005",
-      "nome": "Notebookfas",
-      "marca": "Genéricoga",
+      "nome": "Notebook",
+      "marca": "Genérico",
       "qtd": 15
     },
     {
       "id": "0006",
-      "nome": "Impressorsfdssdf",
+      "nome": "Impressora",
       "marca": "Genérico",
-      "qtd": 1
+      "qtd": 10
     },
     {
       "id": "0007",
-      "nome": "Roteadorsgsdfsdgsgds",
+      "nome": "Roteador",
       "marca": "Genérico",
       "qtd": 1
     },
