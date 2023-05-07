@@ -4,13 +4,13 @@
   "main": "index.js",
   "author": "Ulisses Silvério",
   "description": "mock api criada para servir o porjeto controle-estoque-webpack https://github.com/Odisseu93/controle-estoque-webpack",
-  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
+    "cors": "^2.8.5",
     "json-server": "^0.17.3"
   }
 }
