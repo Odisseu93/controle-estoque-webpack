@@ -1,14 +1,17 @@
 import React from 'react';
-import { uuid } from '../../../utils/uuid';
 const THead = () => {
 
-const th = ()=> {
-   return ['ID', 'Nome', 'Marca', 'Qtd', 'Opções'].map(att => <th key={uuid()}>{att}</th>);
-}
+
 
     return (
         <thead className='topico'>
-           {th()} 
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Quantidade</th>
+                <th>Opções</th>
+            </tr>
         </thead>
     )
 }

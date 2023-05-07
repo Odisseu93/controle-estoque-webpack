@@ -45,10 +45,10 @@ const TBody = () => {
                     <td className="td-nome">{nome}</td>
                     <td className="td-marca">{marca}</td>
                     <td className="td-qtd">{qtd}</td>
-                    <div className="btns">
+                    <td className="btns">
                         <button onClick={() => HandleClickBtnEdt(id)}>Editar</button>
                         <button onClick={() => HandleClickBtnRem(id)}>Apagar</button>
-                    </div>
+                    </td>
                 </tr>
             }) : null}
         </tbody>
