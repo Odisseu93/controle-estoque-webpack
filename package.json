@@ -6,7 +6,7 @@
   "description": "mock api criada para servir o porjeto controle-estoque-webpack https://github.com/Odisseu93/controle-estoque-webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
   "license": "ISC",
