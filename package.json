@@ -1,0 +1,16 @@
+{
+  "name": "mock-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ulisses Silvério",
+  "description": "mock api criada para servir o porjeto controle-estoque-webpack https://github.com/Odisseu93/controle-estoque-webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.17.3"
+  }
+}
