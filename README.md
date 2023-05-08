@@ -87,6 +87,9 @@ Agora você deve ser capaz de visualizar e interagir com a aplicação em seu am
 - [Zod](https://www.npmjs.com/package/zod)
 - [json-server](https://www.npmjs.com/package/json-server)
 
+## Licença
+[MIT](LICENSE.MD)
+
 ## Desenvolvedor
 
 <div align="center">
