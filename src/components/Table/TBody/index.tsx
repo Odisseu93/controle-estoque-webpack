@@ -3,6 +3,7 @@ import { Produtos } from "../../../services/Produtos";
 import { uuid } from "../../../utils/uuid";
 import { TProduto } from "../../../services/Produtos/types";
 import { UseMainContext } from "../../../context/MainContext/hooks";
+import { typeEnumAlert } from "../../Alert/types";
 
 
 
@@ -15,7 +16,10 @@ const TBody = () => {
         render,
         setRender,
         filter, 
-        setFilter } = UseMainContext();
+        alertRender,
+        setAlertData,
+        setAlertRender
+    } = UseMainContext();
 
     const fetch = () => {
        Produtos.getAll().then(data => setProdutos(data));
@@ -30,6 +34,12 @@ const TBody = () => {
     const HandleClickBtnRem = (id: string) => {
         Produtos.remove(id)
         setRender(render + 1);
+        setAlertRender(alertRender + 1);
+        setAlertData({
+            type: typeEnumAlert.ERROR,
+            title: 'Produto Deletado!',
+            wait: 2000
+        });
     };
     
     const HandleClickBtnEdt = (id: string) => {
