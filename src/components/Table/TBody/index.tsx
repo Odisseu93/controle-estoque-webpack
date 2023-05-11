@@ -33,14 +33,17 @@ const TBody = () => {
     
 
     const HandleClickBtnRem = (id: string) => {
-        Produtos.remove(id)
-        setRender(render + 1);
-        setAlertRender(alertRender + 1);
-        setAlertData({
-            type: typeEnumAlert.ERROR,
-            title: 'Produto Deletado!',
-            wait: 2000
-        });
+        Produtos.remove(id).then((res)=> {
+            if(res) {
+                setRender(render + 1);
+                setAlertRender(alertRender + 1);
+                setAlertData({
+                    type: typeEnumAlert.ERROR,
+                    title: 'Produto Deletado!',
+                    wait: 2000
+                });
+            }
+        })
     };
     
     const HandleClickBtnEdt = (id: string) => {
