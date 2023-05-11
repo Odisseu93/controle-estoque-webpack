@@ -4,6 +4,7 @@ import { uuid } from "../../../utils/uuid";
 import { TProduto } from "../../../services/Produtos/types";
 import { UseMainContext } from "../../../context/MainContext/hooks";
 import { typeEnumAlert } from "../../Alert/types";
+import ReactLoading from "react-loading";
 
 
 
@@ -52,6 +53,7 @@ const TBody = () => {
 
     return (
         <tbody>
+           
             {produtos ? produtos.filter(({ id, nome })=> id === filter || nome.match(new RegExp(filter , 'i')) ).map(({ id, nome, marca, qtd }: TProduto) => {
                 return <tr key={uuid()} className='linha-tabela-produto'>
                     <td className="td-id">{id}</td>
@@ -63,7 +65,7 @@ const TBody = () => {
                         <button onClick={() => HandleClickBtnRem(id)}>Apagar</button>
                     </td>
                 </tr>
-            }) : null}
+            }) : <ReactLoading className="spinner" type={"bubbles"} color={"#16FF00"} height={"AUTO"} width={"200px"} />}
         </tbody>
 
     );
